@@ -288,6 +288,14 @@ const routes = [
     },
     component: () => import('pages/Auth/Register.vue')
   },
+  {
+    path: '/forget',
+    meta: {
+      access: 'public',
+      sidebar: false
+    },
+    component: () => import('pages/Auth/ForgotPassword.vue')
+  },
 
   // Always leave this as last one,
   // but you can also remove i
