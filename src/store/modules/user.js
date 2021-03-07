@@ -327,6 +327,21 @@ const user = {
           console.log(err)
           reject(err)
         })
+    },
+
+    async ForgotPassword({ commit }, data) {
+      return new Promise((resolve, reject) => {
+        this.$repository.user.forgotPassword(data.email)
+          .then(res => {
+            User.insert({ data: res.data})
+            resolve(res.data)
+            console.log(res.data)
+          })
+          .catch(err => {
+            console.log(err)
+            reject(err)
+          })
+      })
     }
   }
 }

@@ -160,4 +160,18 @@ export default class UserRepository extends Repository {
   async updateUserProfile(id, data) {
     return await datasource.patch(`users/${id}/profile`, data)
   }
+
+  async forgotPassword(email) {
+    const response = await datasource({
+      method: 'post',
+      url: `user/forget/email`,
+      data: qs.stringify({
+        email: email
+      }),
+      headers: {
+        'content-type': 'application/x-www-form-urlencoded;charset=utf-8'
+      }
+    })
+    return response
+  }
 }
